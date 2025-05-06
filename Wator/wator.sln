@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wator", "src\wator.csproj", "{015C0DAE-7688-839F-1629-F723F6BAC23A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wator-test", "test\wator-test.csproj", "{09A0C412-2CD7-A38A-85AA-AF7911C2DCD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{015C0DAE-7688-839F-1629-F723F6BAC23A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015C0DAE-7688-839F-1629-F723F6BAC23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015C0DAE-7688-839F-1629-F723F6BAC23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015C0DAE-7688-839F-1629-F723F6BAC23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09A0C412-2CD7-A38A-85AA-AF7911C2DCD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A0C412-2CD7-A38A-85AA-AF7911C2DCD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A0C412-2CD7-A38A-85AA-AF7911C2DCD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09A0C412-2CD7-A38A-85AA-AF7911C2DCD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B98D7C52-23C2-49A9-920D-316661D197DC}
+	EndGlobalSection
+EndGlobal
