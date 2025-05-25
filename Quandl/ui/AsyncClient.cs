@@ -9,9 +9,30 @@ namespace Quandl.UI {
 
         #region async-based implementation
         public async Task RequestAsync() {
-            // implement async-based request logic
-            throw new NotImplementedException();
+          var series = new List<Tuple<string, float[], float[]>>();
+          var sw = new Stopwatch();
+          sw.Start();
+          
+          var stockProcessingTasks = names.Select(name => ProcessStockDataAsync(name)).ToList();
+          var results = await Task.WhenAll(stockProcessingTasks);
+          series.AddRange(results);
+
+          sw.Stop();
+          OnRequestCompleted(series, sw.Elapsed);
         }
+
+        private async Task<Tuple<string, float[], float[]>> ProcessStockDataAsync(string name) {
+          StockData sd = await Task.Run(() => RetrieveStockData(name));
+          List<StockValue> stockValues = sd.GetValues();
+          Task<float[]> seriesTask = Task.Run(() => GetSeries(stockValues, name));
+          Task<float[]> trendTask = Task.Run(() => GetTrend(stockValues, name));
+          await Task.WhenAll(seriesTask, trendTask);
+          float[] seriesData = await seriesTask;
+          float[] trendData = await trendTask;
+
+          return Tuple.Create(name, seriesData, trendData);
+        }
+
 
         public async void Request() {
             await RequestAsync();

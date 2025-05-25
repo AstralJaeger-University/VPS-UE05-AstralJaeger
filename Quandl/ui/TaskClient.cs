@@ -9,8 +9,31 @@ namespace Quandl.UI {
 
         #region task-based implementation
         public void Request() {
-            // implement task-based request logic
-            throw new NotImplementedException();
+          var series = new List<Tuple<string, float[], float[]>>();
+          var sw = new Stopwatch();
+          sw.Start();
+            
+          var allTasks = new List<Task<Tuple<string, float[], float[]>>>();
+            
+          foreach (var name in names) {
+            var retrieveTask = Task.Factory.StartNew(() => RetrieveStockData(name));
+            var processTask = retrieveTask.ContinueWith(previousTask => {
+              StockData sd = previousTask.Result;
+              List<StockValue> values = sd.GetValues();
+              return Tuple.Create(name, GetSeries(values, name), GetTrend(values, name));
+            });
+            allTasks.Add(processTask);
+          }
+          
+          Task.Factory.ContinueWhenAll(allTasks.ToArray(), completedTasks => {
+            foreach (var task in completedTasks) {
+              series.Add(task.Result);
+            }
+                
+            sw.Stop();
+            OnRequestCompleted(series, sw.Elapsed);
+          });
+
         }
 
         public event EventHandler<QuandlEventArgs>? RequestCompleted;
