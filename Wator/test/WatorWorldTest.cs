@@ -1,3 +1,5 @@
+using Version = Wator.Version;
+
 namespace wator_test;
 
 using BenchmarkDotNet.Attributes;
@@ -33,12 +35,34 @@ public class WatorWorldBenchmarks {
             InitialFishPopulation = 20000,
             InitialSharkEnergy = 50,
             InitialSharkPopulation = 5000,
-            SharkBreedEnergy = 100
+            SharkBreedEnergy = 100,
+            Version = Version.OriginalWatorWorld
         };
         var world = new Wator.Original.OriginalWatorWorld(settings);
 
         for (var i = 0; i < settings.Iterations; ++i) {
             world.ExecuteStep();
         }
+    }
+    
+    [Benchmark]
+    public void ParallelPerformance() {
+      var settings = new Wator.Settings {
+        Height = 500,
+        Width = 500,
+        Iterations = 100,
+        FishBreedTime = 10,
+        InitialFishEnergy = 10,
+        InitialFishPopulation = 20000,
+        InitialSharkEnergy = 50,
+        InitialSharkPopulation = 5000,
+        SharkBreedEnergy = 100,
+        Version = Version.ParallelWatorWorld
+      };
+      var world = new Wator.Original.OriginalWatorWorld(settings);
+
+      for (var i = 0; i < settings.Iterations; ++i) {
+        world.ExecuteStep();
+      }
     }
 }

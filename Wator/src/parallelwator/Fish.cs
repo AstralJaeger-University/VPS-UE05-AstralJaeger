@@ -1,7 +1,7 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace Wator.Original;
+namespace Wator.ParallelWator;
 
 public class Fish : Animal
 {
@@ -11,7 +11,7 @@ public class Fish : Animal
   }
 
   // create and initialize a new fish on the specified position of the given world
-  public Fish(OriginalWatorWorld world, Point position, int age)
+  public Fish(ParallelWatorWorld world, Point position, int age)
     : base(world, position)
   {
     Energy = world.InitialFishEnergy;

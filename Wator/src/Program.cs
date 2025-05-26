@@ -53,6 +53,7 @@ namespace Wator
             var settings = new Settings();
             settings.DisplayWorld = true;
             settings.Iterations = 1000;
+            settings.Version = Version.ParallelWatorWorld;
 
             // Type worldType = Type.GetType("Wator.Original.OriginalWatorWorld");
             var type = Assembly.GetExecutingAssembly().GetTypes().

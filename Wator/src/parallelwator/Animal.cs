@@ -1,14 +1,14 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace Wator.Original;
+namespace Wator.ParallelWator;
 
 // base class for animals (fish & sharks)
 public abstract class Animal {
 
   // world that this animal lives in
   // an animal can check neighboring cells
-  public OriginalWatorWorld World { get; private set; }
+  public ParallelWatorWorld World { get; private set; }
 
   // position of the animal in the world (x/y position)
   public Point Position { get; private set; }
@@ -29,7 +29,7 @@ public abstract class Animal {
 
 
   // ctor: create a new animal on the specified position of the given world
-  public Animal(OriginalWatorWorld world, Point position) {
+  public Animal(ParallelWatorWorld world, Point position) {
     World = world;
     Position = position;
     Age = 0;

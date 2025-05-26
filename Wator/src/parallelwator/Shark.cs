@@ -1,7 +1,7 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace Wator.Original;
+namespace Wator.ParallelWator;
 
 public class Shark : Animal
 {
@@ -11,7 +11,7 @@ public class Shark : Animal
   }
 
   // create and initialize a shark on the specified position in the given world
-  public Shark(OriginalWatorWorld world, Point position, int energy)
+  public Shark(ParallelWatorWorld world, Point position, int energy)
     : base(world, position)
   {
     Energy = energy;
